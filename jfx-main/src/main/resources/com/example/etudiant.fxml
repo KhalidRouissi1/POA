@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.collections.FXCollections ?>
+<?import java.lang.String?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ControllerEtudiant">
+   <children>
+      <HBox prefHeight="176.0" prefWidth="540.0">
+         <children>
+            <VBox prefHeight="176.0" prefWidth="426.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Information Etudiant" />
+                  <GridPane prefHeight="150.0" prefWidth="418.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="10.0" prefWidth="80.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="116.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="78.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="126.0" minWidth="10.0" prefWidth="122.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom:" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom:" GridPane.rowIndex="1" />
+                        <TextField fx:id="nom" onAction="#addStudent" GridPane.columnIndex="1" />
+                        <TextField fx:id="prenom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sexe:" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Filiere:" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3">
+                           <fx:define>
+                              <ToggleGroup fx:id="sexe" />
+                           </fx:define>
+                           <children>
+                              <RadioButton mnemonicParsing="false" selected="true" text="H" ToggleGroup="$sexe" />
+                              <RadioButton mnemonicParsing="false" text="F" ToggleGroup="$sexe" />
+                           </children>
+                        </HBox>
+                        <ChoiceBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" fx:id="filiere" >
+                           <items>
+                              <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="DSI" />
+                                    <String fx:value="MDW" />
+                                    <String fx:value="RSI" />
+                                    <String fx:value="SEM" />
+                              </FXCollections>
+                           </items>
+                        </ChoiceBox>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="176.0" prefWidth="119.0" spacing="20.0">
+               <children>
+                  <Button fx:id="add" mnemonicParsing="false" onAction="#addStudent" prefWidth="100.0" text="Ajouter" />
+                  <Button fx:id="delete" mnemonicParsing="false" prefHeight="24.0" prefWidth="100.0" text="Supprimer" />
+                  <Button fx:id="update" alignment="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Modifier" />
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="176.0" prefWidth="540.0">
+         <children>
+            <VBox prefHeight="170.0" prefWidth="547.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des etudiants" />
+                  <TableView fx:id="studentstable" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="108.0" text="ID" />
+                        <TableColumn fx:id="nomColumn" prefWidth="108.0" text="Nom" />
+                        <TableColumn fx:id="prenomColumn" prefWidth="108.0" text="Prenom" />
+                        <TableColumn fx:id="sexeColumn" prefWidth="108.0" text="Sexe" />
+                        <TableColumn fx:id="filiereColumn" prefWidth="108.0" text="Filiere" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+   </padding>
+</VBox>
